@@ -17,53 +17,82 @@
   </head>
 
   <body>
-    <section class="fWrapper">
-      <section>
-        <section class="hBox">
-          <h1>FAC Fruit Basket</h1>
-        </section>
-        <section class="displayUsername"></section>
-        <section class="nameField">
-          <form action="/submitname" method="post">
-            <label for="new-username" class="name">Name:</label>
-            <input
-              id="new-username"
-              aria-label="Enter your name"
-              type="text"
-              placeholder="Enter your name..."
-              autocomplete="off"
-              required
-            />
-            <button aria-label="Submit your details" type="submit" id="nameBtn">
-              Submit
-            </button>
-          </form>
-        </section>
-        <h2>Fruit Shop</h2>
-        <p id="kitty">Kitty:</p>
-        <table class="stock_table">
-          <thead>
-            <tr>
-              <th class="stock_name">Fruit</th>
-              <th class="stock_level">Stock</th>
-              <th class="stock_price">Price £</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </section>
+        <h1 class="hBox fWrapper">FAC Fruit Basket</h1>
 
-      <section>
-        <h2>Basket</h2>
-        <table class="shopping_list tables">
-          <thead>
-            <tr>
-              <th class="purchased_name">Fruit</th>
-              <th class="purchased_amount">Amount</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <section class="nameField fWrapper">
+            <form action="/submitname" method="post">
+              <h2>Register new user</h2>
+              <label for="new-username" class="name">New user:</label>
+              <input
+                id="new-username"
+                aria-label="Create new username"
+                type="text"
+                placeholder="Username"
+                autocomplete="off"
+                required
+              />
+              <label for="new-password" class="name">New password:</label>
+              <input
+                id="new-password"
+                aria-label="Enter your password"
+                type="text"
+                placeholder="Password"
+                autocomplete="off"
+                required
+              />
+              <label for="confirm-new-password" class="name"
+                >Confirm password:</label
+              >
+              <input
+                id="confirm-new-password"
+                aria-label="Enter your password"
+                type="text"
+                placeholder="Password"
+                autocomplete="off"
+                required
+              />
+              <button
+                aria-label="Submit your details"
+                type="submit"
+                id="nameBtn"
+              >
+                Submit
+              </button>
+            </form>
+          </section>
+
+          <section class="fWrapper">
+            <form action="/submitname" method="post">
+              <h2>Existing users</h2>
+              <label for="oldusername" class="name">Username:</label>
+              <input
+                id="old-username"
+                aria-label="Enter your name"
+                type="text"
+                placeholder="Username"
+                autocomplete="off"
+                required
+              />
+              <label for="new-password" class="name">Password:</label>
+              <input
+                id="new-password"
+                aria-label="Enter your password"
+                type="text"
+                placeholder="Password"
+                autocomplete="off"
+                required
+              />
+
+              <button
+                aria-label="Submit your details"
+                type="submit"
+                id="nameBtn"
+              >
+                Submit
+              </button>
+            </form>
+          </section>
+        </section>
       </section>
     </section>
     <script type="text/javascript" src="./public/scripts/index.js"></script>
