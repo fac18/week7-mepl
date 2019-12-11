@@ -14,7 +14,7 @@ const getStockData = cb => {
     }
   );
 };
-
+ 
 const getUsers = cb => {
   databaseConnection.query(
     "SELECT name, password FROM users ORDER BY id",

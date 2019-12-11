@@ -16,9 +16,11 @@ const router = (request, response) => {
     getHandler(request, response);
   } else if (endpoint.includes("submitname")) {
     postHandler(request, response);
+  } else if (endpoint.includes("/getUser")) {
+    getUserData(request, response);
   } else {
     handle404(request, response);
-  }
+  } 
 };
 
 module.exports = router;
