@@ -109,3 +109,4 @@ const addToBasket = itemName => {
   xhr.open("GET", url);
   xhr.send();
 };
+

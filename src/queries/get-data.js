@@ -15,8 +15,22 @@ const getStockData = cb => {
   );
 };
 
+const getUsers = cb => {
+  databaseConnection.query(
+    "SELECT name, password FROM users ORDER BY id",
+    (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      cb(null, res.rows);
+    }
+  );
+};
+
 module.exports = {
-  getStockData
+  getStockData,
+  getUsers
 };
 
 

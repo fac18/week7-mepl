@@ -84,11 +84,24 @@ const getHandler = (req, res) => {
   });
 }
 
+const getUserData = (req, res) => {
+  getData.getUserData((err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const userArray = JSON.stringify(data);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(userArray);
+    }
+  });
+}
+
 
 module.exports = {
   handleHome,
   handlePublic,
   postHandler,
   getHandler,
+  getUserData,
   handle404
 };

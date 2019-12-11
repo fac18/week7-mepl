@@ -7,11 +7,13 @@ DROP TABLE IF EXISTS users, shop, basket CASCADE;
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   name varchar,
-  kitty integer DEFAULT 16
+  kitty integer DEFAULT 16,
+  password varchar
 );
 
 INSERT INTO users (name) VALUES ('Ana');
 INSERT INTO users (name, kitty) VALUES ('Elsa', 80);
+INSERT INTO users (name, kitty, password) VALUES ('Olaf', 16, 'password')
 
 CREATE TABLE IF NOT EXISTS shop (
   id SERIAL PRIMARY KEY,
