@@ -44,12 +44,31 @@ const getStock = () => {
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       const stockArray = JSON.parse(xhr.responseText);
+      console.log(stockArray);
       populateStockTable(stockArray);
     }
   };
   xhr.open("GET", url, true);
   xhr.send();
 };
+
+const checkUser = () => {
+  const xhr = new XMLHttpRequest();
+  const url = "/getUser";
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const usersObj = JSON.parse(xhr.responseText);
+      usersObj.map( x => {
+        
+      })
+    }
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+};
+
+
+
 
 // When page loads, retrieve stock levels from database
 window.addEventListener("load", getStock);
