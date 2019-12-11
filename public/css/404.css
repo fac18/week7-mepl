@@ -1,0 +1,37 @@
+h1 {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 4rem;
+    text-decoration: underline;
+}
+
+body {
+    min-height: 100vh;
+    max-width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../background404.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fWrapper {
+    background: whitesmoke;
+    opacity: 0.8;
+    padding: 4rem;
+    min-width: 60%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: rosybrown 3px solid;
+    margin: 3rem;
+    border-radius: 1.5rem;
+    min-width: 60%;
+    min-height: auto;
+}
+
+
+
+/* 404.css */

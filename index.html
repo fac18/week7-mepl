@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Online Fruit Shop" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/x-icon" href="./public/favicon.ico" />
+    <link rel="stylesheet" href="./public/css/reset.css" />
+    <link rel="stylesheet" href="./public/css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap"
+      rel="stylesheet"
+    />
+    <title>FAC Fruit Basket</title>
+  </head>
+
+  <body>
+    <section class="fWrapper">
+      <section>
+        <section class="hBox">
+          <h1>FAC Fruit Basket</h1>
+        </section>
+        <section class="displayUsername"></section>
+        <section class="nameField">
+          <form action="/submitname" method="post">
+            <label for="new-username" class="name">Name:</label>
+            <input
+              id="new-username"
+              aria-label="Enter your name"
+              type="text"
+              placeholder="Enter your name..."
+              autocomplete="off"
+              required
+            />
+            <button aria-label="Submit your details" type="submit" id="nameBtn">
+              Submit
+            </button>
+          </form>
+        </section>
+        <h2>Fruit Shop</h2>
+        <p id="kitty">Kitty:</p>
+        <table class="stock_table">
+          <thead>
+            <tr>
+              <th class="stock_name">Fruit</th>
+              <th class="stock_level">Stock</th>
+              <th class="stock_price">Price £</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Basket</h2>
+        <table class="shopping_list tables">
+          <thead>
+            <tr>
+              <th class="purchased_name">Fruit</th>
+              <th class="purchased_amount">Amount</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </section>
+    <script type="text/javascript" src="./public/scripts/index.js"></script>
+  </body>
+</html>
