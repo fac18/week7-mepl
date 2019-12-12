@@ -130,3 +130,9 @@ const populateStockTable = arr => {
 //   xhr.send();
 // };
 
+const displayInfo = document.querySelector('displayInfo');
+const loginBtn = document.querySelector('loginBtn');
+
+loginBtn.addEventListener('click', () => {
+  displayInfo.textContent = `Hi ${newUser.value}, start shopping`
+})
