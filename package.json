@@ -4,7 +4,7 @@
   "description": "Kin - Maria - Nikke - Pat",
   "main": "index.js",
   "scripts": {
-    "test": "tape tests/routers-test.js | tap-spec",
+    "test": "tape tests/* | tap-spec",
     "testdb": "NODE_ENV=test node src/tests/database-test.js",
     "dev": "nodemon src/server/server.js",
     "coverage": "nyc tape src/tests/*.js | tap-spec",
@@ -30,6 +30,7 @@
     "tape": "^4.11.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "env2": "^2.2.2",
     "pg": "^7.14.0"
   }

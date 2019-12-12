@@ -5,7 +5,8 @@ const path = require("path");
 const getData = require("../queries/get-data");
 const postData = require("../queries/post-data");
 const querystring = require("querystring");
-const cookies = require("../queries/cookies")
+const cookies = require("../queries/cookies");
+const encrypt = require("../queries/encrypt");
 
 const handleHome = (req, res, endpoint) => {
   const filePath = path.join(__dirname, "..", "..", "index.html");
@@ -105,20 +106,41 @@ const getHandler = (req, res) => {
   });
 }
 
-const getUserData = (req, res) => {
-  getData.getUserData((err, data) => {
+const getUserDataHandler = (req, res, endpoint) => {
+  let username = endpoint.slice(endpoint.indexOf("=")+1, endpoint.indexOf("?",8));
+  let password = endpoint.slice(endpoint.lastIndexOf("=")+1);
+
+  encrypt.hashPassword(username, password, (err, hashedPassword) => {
     if (err) {
       console.log(err);
+      return;
     } else {
-      // const userArray = JSON.stringify(data);
-      res.writeHead(302, { 
-        "Content-Type": "text/html",
-        "Set-Cookie": `logged_in=${tokenRes}; Max-Age=9999`,
-        "Location": "/shop"
+      getData.getUserData(username, (err, data) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          dbPassword = data[0].password;
+          console.log(dbPassword);
+        }
       });
-      res.end();
-    }
+      // pass returned db password and hashedpassword to compare function in encrypt.
+    } 
   });
+  
+  // getData.getUserData((err, data) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     // const userArray = JSON.stringify(data);
+  //     res.writeHead(302, { 
+  //       "Content-Type": "text/html",
+  //       "Set-Cookie": `logged_in=${tokenRes}; Max-Age=9999`,
+  //       "Location": "/shop"
+  //     });
+  //     res.end();
+  //   }
+  // });
 }
 
 
@@ -128,6 +150,6 @@ module.exports = {
   handleShop,
   postHandler,
   getHandler,
-  getUserData,
+  getUserDataHandler,
   handle404
 };
