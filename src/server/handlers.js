@@ -109,9 +109,13 @@ const getUserData = (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      const userArray = JSON.stringify(data);
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(userArray);
+      // const userArray = JSON.stringify(data);
+      res.writeHead(302, { 
+        "Content-Type": "text/html",
+        "Set-Cookie": `logged_in=${tokenRes}; Max-Age=9999`,
+        "Location": "/shop"
+      });
+      res.end();
     }
   });
 }
