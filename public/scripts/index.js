@@ -1,12 +1,16 @@
 const newUser = document.getElementById("new-username");
-const nameBtn = document.getElementById("nameBtn");
+const newPassword = document.getElementById("new-password");
+const confirmNewPassword = document.getElementById("confirm-new-password");
+const registerBtn = document.getElementById("registerBtn");
 const nameField = document.getElementsByClassName("nameField")[0];
 const displayUsername = document.getElementsByClassName("displayUsername")[0];
 const kitty = document.querySelector("#kitty")
 
-nameBtn.addEventListener("click", event => {
+registerBtn.addEventListener("click", event => {
   event.preventDefault();
   console.log(newUser.value);
+  console.log(newPassword.value);
+  console.log(confirmNewPassword.value);
   if (newUser.value) {
     let yourName = newUser.value;
     let xhr = new XMLHttpRequest();
