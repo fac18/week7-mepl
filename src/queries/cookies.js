@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const createToken = () => {
 
     const data = {
-        userId: 1
+        userId: "tempuser"
     };
 
     const secret = 'arsenal123';
@@ -25,8 +25,17 @@ const createToken = () => {
 
 }
 
-// const verifyToken = () => {
+const verifyToken = () => {
+    if(req.headers.cookie) {
+        let tempToken = cookie.parse(req.headers.cookie).logged_in
+        let decodedToken = jwt.verify(tempToken, secret);
+        if(decodedToken.userId === 'tempuser') {
+            return true; 
+        }
+    } else {
+        return false;
+    }
+}
 
-// }
 
 module.exports = { createToken, verifyToken };
