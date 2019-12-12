@@ -134,3 +134,5 @@ const populateStockTable = arr => {
 //   xhr.send();
 // };
 
+
+
