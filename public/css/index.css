@@ -1,78 +1,74 @@
-.name {
-  font-weight: 900;
-  font-size: 1rem;
-}
-
-h1 {
-  font-family: "Berkshire Swash", cursive;
-  font-size: 1.5rem;
-  color: rgb(155, 3, 185);
-  text-decoration: underline;
-  text-transform: uppercase;
-}
-h2 {
-  font-size: 1rem;
-  color: rgb(155, 3, 185);
-  text-decoration: underline;
-  text-transform: uppercase;
-}
-label {
-  font-size: 0.5rem;
-}
-
-.hBox {
-  background-color: rgb(241, 198, 3);
-  padding: 1em;
-  box-shadow: 8px 8px 5px whitesmoke inset, -8px -8px 20px whitesmoke inset;
-  text-align: center;
-}
-
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-image: url("../background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+h1 {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .fWrapper {
-  margin: 1rem;
-  background: whitesmoke;
-  border: rosybrown 3px solid;
-  border-radius: 1.5rem;
-  opacity: 0.8;
-  padding: 1.5rem;
-  min-width: 60%;
-  min-height: auto;
+  margin: 5%;
 }
 
-.nameField {
-  padding-top: 2rem;
-  display: block;
+/* Register User and Check Existing user form sections */
+
+legend {
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.NWrapper {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  background: whitesmoke;
-  border: rosybrown 1px solid;
-  border-radius: 0.5rem;
-  opacity: 0.8;
-  padding: 0.5rem 1rem;
-  min-width: auto;
-  min-height: auto;
+.user-form-container {
+  width: 95%;
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+  background: rgb(235, 231, 236);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
 }
 
-.tables,
-td,
-th {
-  border: 2px rosybrown solid;
+.user-form-container .input-field {
+  margin-top: 15px;
+  position: relative;
 }
 
-#nameBtn {
-  border: 2px rgb(241, 198, 3) solid;
-  background-color: rgb(155, 3, 185);
+.user-form-container .input-field input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 0 10px 10px;
+  color: #000;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+}
+
+.user-form-container .input-field label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 10px 10px 10px;
+  color: grey;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.user-form-container .input-field input:focus ~ label,
+.user-form-container .input-field input:valid ~ label {
+  top: -29px;
+  left: 0;
+  color: rgb(39, 37, 37);
+  font-size: 0.8rem;
+}
+
+button {
+  background-color: rgb(28, 148, 92);
   color: white;
+  display: flex;
+  align-content: center;
 }
-/* index.css */

@@ -9,92 +9,106 @@
     <link rel="shortcut icon" type="image/x-icon" href="./public/favicon.ico" />
     <link rel="stylesheet" href="./public/css/reset.css" />
     <link rel="stylesheet" href="./public/css/index.css" />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap"
       rel="stylesheet"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
     />
+
     <title>FAC Fruit Basket</title>
   </head>
 
   <body>
-        <h1 class="hBox fWrapper">FAC Fruit Basket</h1>
-
-        <section class="nameField fWrapper">
-            <form action="/submitname" method="post">
-              <h2>Register new user</h2>
-              <label for="new-username" class="name">New user:</label>
+    <h1 class="hBox fWrapper">FAC Fruit Basket</h1>
+    <section class="nameField fWrapper">
+      <div class="user-form-container">
+        <!-- /* Changed from submitname to registername - amend on post request and router*/ -->
+        <form action="/registername" method="post">
+          <fieldset>
+            <legend>Register new user</legend>
+            <div class="input-field">
               <input
                 id="new-username"
                 aria-label="Create new username"
                 type="text"
-                placeholder="Username"
                 autocomplete="off"
                 required
               />
-              <label for="new-password" class="name">New password:</label>
+              <label for="new-username">New username</label>
+            </div>
+            <div class="input-field">
               <input
                 id="new-password"
-                aria-label="Enter your password"
+                aria-label="Create new password"
                 type="text"
-                placeholder="Password"
                 autocomplete="off"
                 required
               />
-              <label for="confirm-new-password" class="name"
-                >Confirm password:</label
-              >
+              <label for="new-password">New password</label>
+            </div>
+            <div class="input-field">
               <input
                 id="confirm-new-password"
-                aria-label="Enter your password"
+                aria-label="Confirm password"
                 type="text"
-                placeholder="Password"
                 autocomplete="off"
                 required
               />
-              <button
-                aria-label="Submit your details"
-                type="submit"
-                id="nameBtn"
-              >
-                Submit
-              </button>
-            </form>
-          </section>
-
-          <section class="fWrapper">
-            <form action="/submitname" method="post">
-              <h2>Existing users</h2>
-              <label for="oldusername" class="name">Username:</label>
-              <input
-                id="old-username"
-                aria-label="Enter your name"
-                type="text"
-                placeholder="Username"
-                autocomplete="off"
-                required
-              />
-              <label for="new-password" class="name">Password:</label>
-              <input
-                id="new-password"
-                aria-label="Enter your password"
-                type="text"
-                placeholder="Password"
-                autocomplete="off"
-                required
-              />
-
-              <button
-                aria-label="Submit your details"
-                type="submit"
-                id="nameBtn"
-              >
-                Submit
-              </button>
-            </form>
-          </section>
-        </section>
-      </section>
+              <label for="confirm-new-password">Confirm password</label>
+            </div>
+            <button
+              id="registerBtn"
+              aria-label="Submit your details"
+              type="submit"
+            >
+              Register
+            </button>
+          </fieldset>
+        </form>
+      </div>
     </section>
+
+    <section class="fWrapper">
+      <div class="user-form-container">
+        <!-- should this be a post or get request? -->
+        <form action="/existinguser" method="post">
+          <fieldset>
+            <legend>Existing users</legend>
+            <div class="input-field">
+              <input
+                id="existing-username"
+                aria-label="Enter your existing username"
+                type="text"
+                autocomplete="off"
+                required
+              />
+              <label for="existing-username">Username</label>
+            </div>
+            <div class="input-field">
+              <input
+                id="existing-password"
+                aria-label="Enter your password"
+                type="text"
+                autocomplete="off"
+                required
+              />
+              <label for="existing-password">Password</label>
+            </div>
+            <button
+              id="loginBtn"
+              aria-label="Submit your details"
+              type="submit"
+            >
+              Login
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
     <script type="text/javascript" src="./public/scripts/index.js"></script>
   </body>
 </html>
