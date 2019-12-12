@@ -159,7 +159,4 @@ const xhr = new XMLHttpRequest();
   xhr.send();
 }
 
-loginBtn.addEventListener("click", getExistingUser);
-
-
-
+loginBtn.addEventListener("click", getExistingUser, true);
