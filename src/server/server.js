@@ -4,9 +4,9 @@ const router = require('./routers.js');
 
 const server = http.createServer(router);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 server.listen(port, () => {
-    console.log("Server is up and running on port 3000!")
-})
+    console.log("Server is up and running on port 3001!");
+});
 // server.js

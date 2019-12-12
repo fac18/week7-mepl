@@ -43,6 +43,26 @@ const handlePublic = (req, res, endpoint) => {
   });
 }
 
+const handleShop = (req, res) => {
+  // if user is authorised (write separate function to check cookie token), then show shop page
+  // otherwise show not-authorised page
+  if (true) {
+    const filePath = path.join(__dirname, "..", "..", "public", "html", "shop.html");
+    fs.readFile(filePath, (err, file) => {
+    if (err) {
+      res.writeHead(500, { "Content-type": "text/html" });
+      res.end("<h1> We've had a problem</h1>");
+    } else {
+      res.writeHead(200, { "Content-type": "text/html" });
+      res.end(file);
+    }
+    });
+  } else {
+    res.writeHead(401, { "Content-type": "text/html" });
+    res.end("<h1>You're not allowed into the shop!</h1>");
+  }
+}
+
 function postHandler(req, res) {
   postData.postName(req.url, (err, result) => {
     if (err) {
@@ -100,6 +120,7 @@ const getUserData = (req, res) => {
 module.exports = {
   handleHome,
   handlePublic,
+  handleShop,
   postHandler,
   getHandler,
   getUserData,
