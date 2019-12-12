@@ -4,7 +4,7 @@
   "description": "Kin - Maria - Nikke - Pat",
   "main": "index.js",
   "scripts": {
-    "test": "tape tests/routers-test.js | tap-spec",
+    "test": "tape tests/* | tap-spec",
     "testdb": "NODE_ENV=test node src/tests/database-test.js",
     "dev": "nodemon src/server/server.js",
     "coverage": "nyc tape src/tests/*.js | tap-spec",
