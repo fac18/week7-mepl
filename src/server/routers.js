@@ -4,7 +4,7 @@ const {
   handleShop,
   postHandler,
   getHandler,
-  getUserData,
+  getUserDataHandler,
   handle404
 } = require("./handlers");
 
@@ -21,8 +21,8 @@ const router = (request, response) => {
     handlePublic(request, response, endpoint);
   } else if (endpoint.includes("submitname")) {
     postHandler(request, response);
-  } else if (endpoint.includes("/getUser")) {
-    getUserData(request, response);
+  } else if (endpoint.includes("/login")) {
+    getUserDataHandler(request, response, endpoint);
   } else {
     handle404(request, response);
   } 

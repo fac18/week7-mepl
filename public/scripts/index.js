@@ -6,59 +6,61 @@ const nameField = document.getElementsByClassName("nameField")[0];
 const displayUsername = document.getElementsByClassName("displayUsername")[0];
 const kitty = document.querySelector("#kitty")
 
-registerBtn.addEventListener("click", event => {
-  event.preventDefault();
-  console.log(newUser.value);
-  console.log(newPassword.value);
-  console.log(confirmNewPassword.value);
-  if (newUser.value) {
-    let yourName = newUser.value;
-    let xhr = new XMLHttpRequest();
-    // DOM manipulation
-    nameField.style.display = "none";
-    var para = document.createElement("p");
-    para.classList.add("NWrapper");
-    var displayUser = document.createTextNode(
-      `Hi ${yourName}, get started on your 5 a day!`
-    ); 
-    // Create a text node
-    para.appendChild(displayUser);
-    displayUsername.appendChild(para);
+// registerBtn.addEventListener("click", event => {
+//   event.preventDefault();
+//   console.log(newUser.value);
+//   console.log(newPassword.value);
+//   console.log(confirmNewPassword.value);
+//   if (newUser.value) {
+//     let yourName = newUser.value;
+//     let xhr = new XMLHttpRequest();
+//     // DOM manipulation
+//     nameField.style.display = "none";
+//     var para = document.createElement("p");
+//     para.classList.add("NWrapper");
+//     var displayUser = document.createTextNode(
+//       `Hi ${yourName}, get started on your 5 a day!`
+//     ); 
+//     // Create a text node
+//     para.appendChild(displayUser);
+//     displayUsername.appendChild(para);
 
-    let submitName = "submitname=" + yourName;
-    let encodedName = encodeURIComponent(submitName);
-    console.log(encodedName);
+//     let submitName = "submitname=" + yourName;
+//     let encodedName = encodeURIComponent(submitName);
+//     console.log(encodedName);
 
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        let kittyAmount = JSON.parse(xhr.responseText);
-        kitty.textContent = `Kitty: ${kittyAmount}`;
-      }
-    };
-    xhr.open("POST", encodedName, true);
-    xhr.setRequestHeader('Content-Type', 'text/plain');
-    xhr.send();
-  }
-});
+//     xhr.onreadystatechange = () => {
+//       if (xhr.readyState == 4 && xhr.status == 200) {
+//         let kittyAmount = JSON.parse(xhr.responseText);
+//         kitty.textContent = `Kitty: ${kittyAmount}`;
+//       }
+//     };
+//     xhr.open("POST", encodedName, true);
+//     xhr.setRequestHeader('Content-Type', 'text/plain');
+//     xhr.send();
+//   }
+// });
 
 // Request to get stock levels from database
-const getStock = () => {
-  const xhr = new XMLHttpRequest();
-  const url = "/shop/getstock";
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(xhr.responseText);
-      const stockArray = JSON.parse(xhr.responseText);
-      console.log(stockArray);
-      populateStockTable(stockArray);
-    }
-  };
-  xhr.open("GET", url, true);
-  xhr.send();
-};
+// const getStock = () => {
+//   const xhr = new XMLHttpRequest();
+//   const url = "/shop/getstock";
+//   xhr.onreadystatechange = () => {
+//     if (xhr.readyState === 4 && xhr.status === 200) {
+//       console.log(xhr.responseText);
+//       const stockArray = JSON.parse(xhr.responseText);
+//       console.log(stockArray);
+//       populateStockTable(stockArray);
+//     }
+//   };
+//   xhr.open("GET", url, true);
+//   xhr.send();
+// };
+
+
 
 // When page loads, retrieve stock levels from database
-window.addEventListener("load", getStock);
+// window.addEventListener("load", getStock);
 
 
 // const checkUser = () => {
@@ -133,6 +135,31 @@ const populateStockTable = arr => {
 //   xhr.open("GET", url);
 //   xhr.send();
 // };
+
+
+const extistingUsername = document.getElementById('existing-username');
+const existingPassword = document.getElementById('existing-password');
+const loginBtn = document.getElementById('loginBtn');
+
+
+const getExistingUser = () => {
+  event.preventDefault();
+const xhr = new XMLHttpRequest();
+  const url = `/login?name=${extistingUsername.value}?password=${existingPassword.value}`;
+  console.log(url);
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(xhr.responseText);
+      const existingUserArray = JSON.parse(xhr.responseText);
+      console.log(existingUserArray);
+      // populateStockTable(stockArray);
+    }
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+}
+
+loginBtn.addEventListener("click", getExistingUser);
 
 
 

@@ -15,9 +15,10 @@ const getStockData = cb => {
   );
 };
  
-const getUsers = cb => {
+const getUserData = (username, cb) => {
   databaseConnection.query(
-    "SELECT name, password FROM users ORDER BY id",
+    `SELECT password FROM users WHERE username=($1)`,
+    [username],
     (err, res) => {
       if (err) {
         console.log(err);
@@ -28,9 +29,11 @@ const getUsers = cb => {
   );
 };
 
+
+
 module.exports = {
   getStockData,
-  getUsers
+  getUserData
 };
 
 
