@@ -5,6 +5,7 @@ const path = require("path");
 const getData = require("../queries/get-data");
 const postData = require("../queries/post-data");
 const querystring = require("querystring");
+const cookies = require("../queries/cookies")
 
 const handleHome = (req, res, endpoint) => {
   const filePath = path.join(__dirname, "..", "..", "index.html");
@@ -46,7 +47,7 @@ const handlePublic = (req, res, endpoint) => {
 const handleShop = (req, res) => {
   // if user is authorised (write separate function to check cookie token), then show shop page
   // otherwise show not-authorised page
-  if (true) {
+  if (cookies.verifyToken()) {
     const filePath = path.join(__dirname, "..", "..", "public", "html", "shop.html");
     fs.readFile(filePath, (err, file) => {
     if (err) {
