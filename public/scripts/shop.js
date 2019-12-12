@@ -1,45 +1,41 @@
 const newUser = document.getElementById("new-username");
-const newPassword = document.getElementById("new-password");
-const confirmNewPassword = document.getElementById("confirm-new-password");
-const registerBtn = document.getElementById("registerBtn");
+// const nameBtn = document.getElementById("nameBtn");
 const nameField = document.getElementsByClassName("nameField")[0];
 const displayUsername = document.getElementsByClassName("displayUsername")[0];
 const kitty = document.querySelector("#kitty")
 
-registerBtn.addEventListener("click", event => {
-  event.preventDefault();
-  console.log(newUser.value);
-  console.log(newPassword.value);
-  console.log(confirmNewPassword.value);
-  if (newUser.value) {
-    let yourName = newUser.value;
-    let xhr = new XMLHttpRequest();
-    // DOM manipulation
-    nameField.style.display = "none";
-    var para = document.createElement("p");
-    para.classList.add("NWrapper");
-    var displayUser = document.createTextNode(
-      `Hi ${yourName}, get started on your 5 a day!`
-    ); 
-    // Create a text node
-    para.appendChild(displayUser);
-    displayUsername.appendChild(para);
+// nameBtn.addEventListener("click", event => {
+//   event.preventDefault();
+//   console.log(newUser.value);
+//   if (newUser.value) {
+//     let yourName = newUser.value;
+//     let xhr = new XMLHttpRequest();
+//     // DOM manipulation
+//     nameField.style.display = "none";
+//     var para = document.createElement("p");
+//     para.classList.add("NWrapper");
+//     var displayUser = document.createTextNode(
+//       `Hi ${yourName}, get started on your 5 a day!`
+//     ); 
+//     // Create a text node
+//     para.appendChild(displayUser);
+//     displayUsername.appendChild(para);
 
-    let submitName = "submitname=" + yourName;
-    let encodedName = encodeURIComponent(submitName);
-    console.log(encodedName);
+//     let submitName = "submitname=" + yourName;
+//     let encodedName = encodeURIComponent(submitName);
+//     console.log(encodedName);
 
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        let kittyAmount = JSON.parse(xhr.responseText);
-        kitty.textContent = `Kitty: ${kittyAmount}`;
-      }
-    };
-    xhr.open("POST", encodedName, true);
-    xhr.setRequestHeader('Content-Type', 'text/plain');
-    xhr.send();
-  }
-});
+//     xhr.onreadystatechange = () => {
+//       if (xhr.readyState == 4 && xhr.status == 200) {
+//         let kittyAmount = JSON.parse(xhr.responseText);
+//         kitty.textContent = `Kitty: ${kittyAmount}`;
+//       }
+//     };
+//     xhr.open("POST", encodedName, true);
+//     xhr.setRequestHeader('Content-Type', 'text/plain');
+//     xhr.send();
+//   }
+// });
 
 // Request to get stock levels from database
 const getStock = () => {
@@ -47,9 +43,9 @@ const getStock = () => {
   const url = "/shop/getstock";
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(xhr.responseText);
+      // console.log(xhr.responseText);
       const stockArray = JSON.parse(xhr.responseText);
-      console.log(stockArray);
+      // console.log(stockArray);
       populateStockTable(stockArray);
     }
   };
@@ -83,7 +79,7 @@ const populateStockTable = arr => {
   const stockTable = document.querySelector(".stock_table tbody");
 
   // Clear all fruit listed on landing page
-  while (stockTable.children.length > 1) {
+  while (stockTable.children.length > 0) {
     stockTable.removeChild(stockTable.lastChild);
   }
 
@@ -93,17 +89,17 @@ const populateStockTable = arr => {
 
     // In same row, create a new column for each fruit name
     let fruitName = document.createElement("td");
-    fruitName.innerText = item.fruit;
+    fruitName.innerText = item.fruit_name;
     fruit.appendChild(fruitName);
 
     // In same row, create a new column for quantity in stock
     let fruitStock = document.createElement("td");
-    fruitStock.innerText = item.stock;
+    fruitStock.innerText = item.fruit_stock;
     fruit.appendChild(fruitStock);
 
     // In same row, create a new column to display fruit price
     let fruitPrice = document.createElement("td");
-    fruitPrice.innerText = item.price;
+    fruitPrice.innerText = item.fruit_price;
     fruit.appendChild(fruitPrice);
 
     // In same row, create a new button to Add to Basket

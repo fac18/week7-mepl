@@ -4,7 +4,7 @@ const databaseConnection = require("../database/db_connection");
 
 const getStockData = cb => {
   databaseConnection.query(
-    "SELECT fruit, stock, price FROM shop ORDER BY id",
+    "SELECT fruit_name, fruit_stock, fruit_price FROM shop ORDER BY fruit_id",
     (err, res) => {
       if (err) {
         console.log(err);
