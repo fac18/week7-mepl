@@ -19,6 +19,6 @@ Why?
 2. run server localhost:3001
 3. enter "mike" to existing users login section
 4. see terminal console logs
-5. handlers.js line 126 runs createToken() function, but continues running next lines of code, before tokenRes can be generated 
+5. handlers.js line 126 runs createToken() function, but continues running next lines of code, before tokenRes can be generated. Problem with callback! 
 
 ![](https://i.imgur.com/GFzxSJ1.png)
