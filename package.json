@@ -4,11 +4,12 @@
   "description": "Kin - Maria - Nikke - Pat",
   "main": "index.js",
   "scripts": {
-    "test": "tape tests/* | tap-spec",
+    "test": "NODE_ENV=tape tests/* | tap-spec",
     "testdb": "NODE_ENV=test node src/tests/database-test.js",
-    "dev": "nodemon src/server/server.js",
-    "coverage": "nyc tape src/tests/*.js | tap-spec",
-    "start": "node src/server/server.js"
+    "dev": "NODE_ENV=nodemon src/server/server.js",
+    "coverage": "NODE_ENV=nyc tape src/tests/*.js | tap-spec",
+    "start": "node src/server/server.js",
+    "build": "node src/database/run_build.js"
   },
   "repository": {
     "type": "git",

@@ -87,7 +87,7 @@ function handle404(req, res) {
       res.end("<h1> Sorry, there's a server errror </h1>");
     } else {
       res.writeHead(404, { "Content-type": "text/html" });
-      res.end(file);
+      res.end('<h1> Page not found</h1>', file);
     }
   });
 }
