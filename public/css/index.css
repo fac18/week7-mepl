@@ -84,3 +84,9 @@ button {
 #loginBtn {
   background-color: rgb(96, 180, 127);
 }
+
+
+#userErr {
+  color: red;
+  padding: 1em;
+}
