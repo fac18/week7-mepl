@@ -2,26 +2,25 @@ const cookie = require('cookie');
 const jwt = require('jsonwebtoken');
 
 
-const createToken = () => {
-
-    const data = {
-        userId: "tempuser"
-    };
-
+const createToken = cb => {
+    const data = { userId: "tempuser" };
     const secret = 'arsenal123';
-
-    let tokenRes = "";
-
+    let tokenRes;
     jwt.sign(data, secret, (err,res) => {
         if (err) {
             console.log(err);
         } else {
             tokenRes = res;
-        }
+            console.log("tokenRes 1 in cookies.js: ", tokenRes);
+            return tokenRes;
+        }    
     });
+    console.log("tokenRes 2 in cookies.js: ", tokenRes);
+
+    cb(null, tokenRes);
     
-    console.log("tokenRes = ", tokenRes);
-    return tokenRes;
+    // console.log("tokenRes = ", tokenRes);
+    // return tokenRes;
 
 }
 

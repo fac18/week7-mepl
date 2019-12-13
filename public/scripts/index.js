@@ -144,9 +144,8 @@ const loginBtn = document.getElementById('loginBtn');
 
 const getExistingUser = () => {
   event.preventDefault();
-const xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   const url = `/login?name=${extistingUsername.value}?password=${existingPassword.value}`;
-  console.log(url);
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       console.log(xhr.responseText);

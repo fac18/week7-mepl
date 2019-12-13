@@ -7,6 +7,7 @@ const postData = require("../queries/post-data");
 const querystring = require("querystring");
 const cookies = require("../queries/cookies");
 const encrypt = require("../queries/encrypt");
+const bcrypt = require("bcryptjs");
 
 const handleHome = (req, res, endpoint) => {
   const filePath = path.join(__dirname, "..", "..", "index.html");
@@ -110,29 +111,68 @@ const getUserDataHandler = (req, res, endpoint) => {
   let username = endpoint.slice(endpoint.indexOf("=")+1, endpoint.indexOf("?",8));
   let password = endpoint.slice(endpoint.lastIndexOf("=")+1);
 
-  encrypt.hashPassword(username, password, (err, hashedPassword) => {
+  getData.getUserData(username, (err, data) => {
     if (err) {
       console.log(err);
       return;
     } else {
-      getData.getUserData(username, (err, data) => {
-        if (err) {
-          console.log(err);
-          return;
-        } else {
-          dbPassword = data[0].password;
-          console.log(dbPassword);
-        }
-      });
-      // pass returned db password and hashedpassword to compare function in encrypt.
-    } 
+      // console.log(data);
+      dbPassword = data[0].password;
+      console.log("dbpassword in gtUserData function:", dbPassword);
+      bcrypt.compare(password, dbPassword)
+        .then(match => { 
+          // must change below to true, and handle false case after
+          if (match === false) {
+            cookies.createToken((error, result) => {
+              console.log("tokenRes in gtUserData function:", result)
+              res.writeHead(302, { 
+                "Content-Type": "text/html",
+                "Set-Cookie": `logged_in=${tokenRes}; Max-Age=9999`,
+                "Location": "/shop"
+              });
+              res.end();
+
+            });
+            
+          } else {
+            
+          }
+        })
+        .catch("promise error catch: ", console.log);
+        // encrypt.comparePasswords(password, dbPassword).then(console.log);
+        // return dbPassword;
+    }
   });
+
+  // bcrypt.compare(password, dbPassword);
+
+  // encrypt.comparePasswords(password, dbPassword)
+  //   .then(res => {console.log(res)});
+
+  // encrypt.comparePasswords(password, dbPassword, (err, res) => {
+  //   if (err) {
+  //     return console.log(err);
+  //   }
+  //     if
+  // })    
+
+
+  // encrypt.hashPassword(username, password, (err, hashedPassword) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   } else {
+
+  //     // pass returned dbpassword and hashedpassword to compare function in encrypt.
+  //   } 
+  // });
   
   // getData.getUserData((err, data) => {
   //   if (err) {
   //     console.log(err);
   //   } else {
   //     // const userArray = JSON.stringify(data);
+
   //     res.writeHead(302, { 
   //       "Content-Type": "text/html",
   //       "Set-Cookie": `logged_in=${tokenRes}; Max-Age=9999`,
