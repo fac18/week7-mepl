@@ -72,3 +72,9 @@ button {
   display: flex;
   align-content: center;
 }
+
+
+#userErr {
+  color: red;
+  padding: 1em;
+}

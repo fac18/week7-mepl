@@ -36,6 +36,7 @@
                 type="text"
                 autocomplete="off"
                 required
+                pattern='[a-z0-9]+'
               />
               <label for="new-username">New username</label>
             </div>
@@ -43,9 +44,10 @@
               <input
                 id="new-password"
                 aria-label="Create new password"
-                type="text"
+                type="password"
                 autocomplete="off"
-                required
+                minlength='6' 
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" 
               />
               <label for="new-password">New password</label>
             </div>
@@ -53,12 +55,15 @@
               <input
                 id="confirm-new-password"
                 aria-label="Confirm password"
-                type="text"
+                type="password"
                 autocomplete="off"
                 required
+                minlength='6' 
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
               />
               <label for="confirm-new-password">Confirm password</label>
             </div>
+            <p id="userErr"></p>
             <button
               id="registerBtn"
               aria-label="Submit your details"
@@ -110,5 +115,6 @@
     </section>
 
     <script type="text/javascript" src="./public/scripts/index.js"></script>
+    <script type="text/javascript" src="./public/scripts/validation.js"></script>
   </body>
 </html>
