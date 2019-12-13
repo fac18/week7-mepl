@@ -2,17 +2,21 @@ body {
   background-image: url("../background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
   font-family: "Luckiest Guy", cursive;
-  font-size: 2.1rem;
-  text-transform: uppercase;
+  font-size: 2rem;
   text-align: center;
+  padding: 15px;
 }
-
-.fWrapper {
-  margin: 5%;
+.heading-section {
+  background-color: white;
+  opacity: 0.9;
+  top: 0;
+  width: 100%;
+  justify-content: center;
 }
 
 /* Register User and Check Existing user form sections */
@@ -21,14 +25,15 @@ legend {
   font-size: 1rem;
   text-transform: uppercase;
   text-align: center;
+  border-radius: 15px;
 }
 
 .user-form-container {
   width: 95%;
   max-width: 400px;
   padding: 15px;
-  margin: 0 auto;
-  background: rgb(235, 231, 236);
+  margin: 5% auto;
+  background: rgba(235, 231, 236, 0.9);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
 }
@@ -43,7 +48,7 @@ legend {
   border-radius: 10px;
   padding: 10px 0 10px 10px;
   color: #000;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border: none;
   outline: none;
 }
@@ -67,8 +72,15 @@ legend {
 }
 
 button {
-  background-color: rgb(28, 148, 92);
   color: white;
-  display: flex;
-  align-content: center;
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+#registerBtn {
+  background-color: rgb(192, 98, 235);
+}
+#loginBtn {
+  background-color: rgb(96, 180, 127);
 }
