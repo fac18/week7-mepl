@@ -84,14 +84,3 @@ button {
 #loginBtn {
   background-color: rgb(96, 180, 127);
 }
-
-footer {
-  background: white;
-  height: 50px;
-  font-family: "Luckiest Guy", cursive;
-  font-size: 15px;
-  text-align: center;
-  vertical-align: middle;
-  padding: 15px;
-  opacity: 0.9;
-}
