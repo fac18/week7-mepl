@@ -8,7 +8,8 @@
     "testdb": "NODE_ENV=test node src/tests/database-test.js",
     "dev": "nodemon src/server/server.js",
     "coverage": "nyc tape src/tests/*.js | tap-spec",
-    "start": "node src/server/server.js"
+    "start": "node src/server/server.js",
+    "build": "node src/database/run_build.js"
   },
   "repository": {
     "type": "git",
